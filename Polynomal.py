@@ -46,3 +46,12 @@ plt.plot(XX, yy, '-r' )
 plt.xlabel("Engine size")
 plt.ylabel("Emission")
 
+# evaluation
+from sklearn.metrics import r2_score
+
+test_x_poly = poly.fit_transform(test_x)
+test_y_ = clf.predict(test_x_poly)
+
+print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
+print("R2-score: %.2f" % r2_score(test_y,test_y_ ))
